@@ -21,7 +21,7 @@ public class TraCuuThuocFragment extends Fragment {
 
 		View rootView = inflater.inflate(R.layout.fragment_tracuuthuoc, container,
 				false);
-		
+		//sdfsdfsdfsdfsdfsdfsdfsdf
 		edtTimThuoc = (EditText) rootView.findViewById(R.id.edtTimThuoc);
 		
 		
