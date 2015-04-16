@@ -25,6 +25,7 @@ public class DrawerMenuAdapter extends BaseAdapter {
 	}
 	
 	///Công thay đổi
+	//s/sdfsdfsdfsd
 
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
