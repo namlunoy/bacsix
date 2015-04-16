@@ -23,7 +23,7 @@ public class TraCuuThuocFragment extends Fragment {
 				false);
 		//sdfsdfsdfsdfsdfsdfsdfsdf
 		edtTimThuoc = (EditText) rootView.findViewById(R.id.edtTimThuoc);
-		
+		//sdfsdfsdfdsfsdfsd
 		
 		return rootView;
 	}
