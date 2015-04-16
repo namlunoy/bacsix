@@ -57,19 +57,20 @@ public class MainActivity extends Activity implements MyCallback {
 
 		mTitle = mDrawerTitle = getTitle();
 
-		// Thêm fragment mới thì thêm vào đây 
+		// ThÃªm fragment má»›i thÃ¬ thÃªm vÃ o Ä‘Ã¢y 
 		menuItems = new ArrayList<DrawerMenuItem>();
-		menuItems.add(new DrawerMenuItem("Tìm Nhà Thuốc",
+		//sds ô
+		menuItems.add(new DrawerMenuItem("TÃ¬m NhÃ  Thuá»‘c",
 				R.drawable.ic_nhathuoc, new TimNhaThuocFragment()));
-		menuItems.add(new DrawerMenuItem("Tra Cứu Thuốc", R.drawable.ic_thuoc,
+		menuItems.add(new DrawerMenuItem("Tra Cá»©u Thuá»‘c", R.drawable.ic_thuoc,
 				new TraCuuThuocFragment()));
-		menuItems.add(new DrawerMenuItem("Tra Cứu Bệnh", R.drawable.ic_benh,
+		menuItems.add(new DrawerMenuItem("Tra Cá»©u Bá»‡nh", R.drawable.ic_benh,
 				new TraCuuBenhFragment()));
-		menuItems.add(new DrawerMenuItem("Bác Sĩ Tại Nhà", R.drawable.ic_bacsi,
+		menuItems.add(new DrawerMenuItem("BÃ¡c SÄ© Táº¡i NhÃ ", R.drawable.ic_bacsi,
 				new BacSiTaiNhaFragment()));
-		menuItems.add(new DrawerMenuItem("Công Cụ", R.drawable.ic_congcu,
+		menuItems.add(new DrawerMenuItem("CÃ´ng Cá»¥", R.drawable.ic_congcu,
 				new CongCuFragment()));
-		menuItems.add(new DrawerMenuItem("Tin Tức Sức Khỏe",
+		menuItems.add(new DrawerMenuItem("Tin Tá»©c Sá»©c Khá»�e",
 				R.drawable.ic_tintuc, new TinTucFragment()));
 
 	
