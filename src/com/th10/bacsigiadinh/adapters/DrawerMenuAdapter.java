@@ -23,6 +23,8 @@ public class DrawerMenuAdapter extends BaseAdapter {
 		this.context = context;
 		this.items = items;
 	}
+	
+	///Công thay đổi
 
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {

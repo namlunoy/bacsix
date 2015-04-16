@@ -54,7 +54,7 @@ public class MainActivity extends Activity implements MyCallback {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
-
+//Công thay dổi
 		mTitle = mDrawerTitle = getTitle();
 
 		//
