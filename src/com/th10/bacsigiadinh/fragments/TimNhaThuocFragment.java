@@ -57,10 +57,11 @@ public class TimNhaThuocFragment extends Fragment implements
 		MyHelper.Log("xxx", "onCreateView");
 
 		// Máp chỉ được phép load 1 lần duy nhất
-		if (rootView == null)
-			rootView = inflater.inflate(R.layout.fragment_timnhathuoc,
-					container, false);
-		cc_status = (TextView) rootView.findViewById(R.id.cc_status);
+		//if (rootView == null)
+			//rootView = inflater.inflate(R.layout.fragment_timnhathuoc,container, false);
+	
+		//cc_status = (TextView) rootView.findViewById(R.id.cc_status);
+		
 		// Lấy con trỏ fragment
 		//mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.map);
 
