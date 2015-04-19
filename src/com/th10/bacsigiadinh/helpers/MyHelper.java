@@ -14,10 +14,12 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 
 import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.util.Log;
 import android.widget.Toast;
 /**
- * Lớp này dùng để thực hiện các phương thức mà được sử dụng nhiều lần
+ * Lá»›p nĂ y dĂ¹ng Ä‘á»ƒ thá»±c hiá»‡n cĂ¡c phÆ°Æ¡ng thá»©c mĂ  Ä‘Æ°á»£c sá»­ dá»¥ng nhiá»�u láº§n
  *
  */
 public class MyHelper {
@@ -28,7 +30,13 @@ public class MyHelper {
 	public static void Toast(Context context, String mess) {
 		Toast.makeText(context, mess, 10).show();
 	}
-
+	
+	public static boolean checkInternetConnection(Context context) {
+		NetworkInfo info = ((ConnectivityManager) context
+				.getSystemService(context.CONNECTIVITY_SERVICE))
+				.getActiveNetworkInfo();
+		return info == null ? false : info.isConnected();
+	}
 
 	public static String InputStreamToString(InputStream is) {
 		try {
