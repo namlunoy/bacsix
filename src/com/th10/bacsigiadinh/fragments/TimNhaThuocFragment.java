@@ -62,11 +62,10 @@ public class TimNhaThuocFragment extends Fragment implements
 					container, false);
 		cc_status = (TextView) rootView.findViewById(R.id.cc_status);
 		// Lấy con trỏ fragment
-		mapFragment = (MapFragment) getFragmentManager().findFragmentById(
-				R.id.map);
+		//mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.map);
 
 		// Lấy googlemap trong fragment (OnMapReadyCallback)
-		mapFragment.getMapAsync(this);
+		//mapFragment.getMapAsync(this);
 
 		mGoogleApiClient = new GoogleApiClient.Builder(getActivity())
 				.addApi(Places.GEO_DATA_API).addApi(Places.PLACE_DETECTION_API)
