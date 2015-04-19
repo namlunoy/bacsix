@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import com.th10.bacsigiadinh.adapters.DrawerMenuAdapter;
 import com.th10.bacsigiadinh.fragments.BacSiTaiNhaFragment;
 import com.th10.bacsigiadinh.fragments.CongCuFragment;
+import com.th10.bacsigiadinh.fragments.TinSucKhoeFragment;
 import com.th10.bacsigiadinh.fragments.TimNhaThuocFragment;
-import com.th10.bacsigiadinh.fragments.TinTucFragment;
 import com.th10.bacsigiadinh.fragments.TraCuuBenhFragment;
 import com.th10.bacsigiadinh.fragments.TraCuuThuocFragment;
 import com.th10.bacsigiadinh.helpers.MyHelper;
@@ -53,27 +53,24 @@ public class MainActivity extends Activity implements MyCallback {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		
-//Công thay dổi
-		
-	//	/sdfsdfs
+
 		mTitle = mDrawerTitle = getTitle();
 
 		//
 		menuItems = new ArrayList<DrawerMenuItem>();
-		//sds ô
-		menuItems.add(new DrawerMenuItem("Tìm Nhà Thuốc",
+		//sds Ă´
+		menuItems.add(new DrawerMenuItem("TĂ¬m NhĂ  Thuá»‘c",
 				R.drawable.ic_nhathuoc, new TimNhaThuocFragment()));
-		menuItems.add(new DrawerMenuItem("Tra Cứu Thuốc", R.drawable.ic_thuoc,
+		menuItems.add(new DrawerMenuItem("Tra Cá»©u Thuá»‘c", R.drawable.ic_thuoc,
 				new TraCuuThuocFragment()));
-		menuItems.add(new DrawerMenuItem("Tra Cứu Bệnh", R.drawable.ic_benh,
+		menuItems.add(new DrawerMenuItem("Tra Cá»©u Bá»‡nh", R.drawable.ic_benh,
 				new TraCuuBenhFragment()));
-		menuItems.add(new DrawerMenuItem("Bác Sĩ Tại Nhà", R.drawable.ic_bacsi,
+		menuItems.add(new DrawerMenuItem("BĂ¡c SÄ© Táº¡i NhĂ ", R.drawable.ic_bacsi,
 				new BacSiTaiNhaFragment()));
-		menuItems.add(new DrawerMenuItem("Cài Đặt", R.drawable.ic_congcu,
+		menuItems.add(new DrawerMenuItem("CĂ i Ä�áº·t", R.drawable.ic_congcu,
 				new CongCuFragment()));
 		menuItems.add(new DrawerMenuItem("Tin Sức Khỏe",
-				R.drawable.ic_tintuc, new TinTucFragment()));
+				R.drawable.ic_tintuc, new TinSucKhoeFragment()));
 
 	
 		//------------------- findview  -------------------

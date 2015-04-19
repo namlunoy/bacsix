@@ -4,5 +4,6 @@
     <string name="app_name">Bác Sĩ Gia Đình</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="title_activity_chi_tiet_bai_bao">ChiTietBaiBaoActivity</string>
 
 </resources>
