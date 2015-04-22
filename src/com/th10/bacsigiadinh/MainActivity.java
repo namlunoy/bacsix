@@ -13,7 +13,6 @@ import com.th10.bacsigiadinh.helpers.MyHelper;
 import com.th10.bacsigiadinh.interfaces.MyCallback;
 import com.th10.bacsigiadinh.items.DrawerMenuItem;
 import com.th10.bacsigiadinh.tasks.DownloadStringTask;
-import com.th10.bacsigiadinh.tasks.GetPlacesTask;
 
 import android.app.ActionBar;
 import android.app.Activity;

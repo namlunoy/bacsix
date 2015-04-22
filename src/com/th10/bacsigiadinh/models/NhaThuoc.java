@@ -1,31 +1,37 @@
 package com.th10.bacsigiadinh.models;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import com.google.android.gms.maps.model.LatLng;
+
 public class NhaThuoc {
-	private String ten;
-	private long latitude;
-	private long longitude;
+	private String name;
+	private LatLng location;
+	private List<String> types;
+	
+	public NhaThuoc() {
+		types = new ArrayList<String>();
+	}
 	
 	
-	
-	
-	public String getTen() {
-		return ten;
+	public List<String> getTypes() {
+		return types;
 	}
-	public void setTen(String ten) {
-		this.ten = ten;
+	public void setTypes(List<String> types) {
+		this.types = types;
 	}
-	public long getLatitude() {
-		return latitude;
+	public String getName() {
+		return name;
 	}
-	public void setLatitude(long latitude) {
-		this.latitude = latitude;
+	public void setName(String ten) {
+		this.name = ten;
 	}
-	public long getLongitude() {
-		return longitude;
+	public LatLng getLocation() {
+		return location;
 	}
-	public void setLongitude(long longitude) {
-		this.longitude = longitude;
+	public void setLocation(LatLng location) {
+		this.location = location;
 	}
-	
 	
 }

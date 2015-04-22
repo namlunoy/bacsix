@@ -35,23 +35,14 @@ public class MyGPS extends Service implements LocationListener {
 					.getSystemService(LOCATION_SERVICE);
 
 			if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
-				// Sử dụng GPS
 				MyHelper.Log("MyGPS", "Sử dụng GPS");
-				locationManager.requestLocationUpdates(
-						LocationManager.GPS_PROVIDER, UPDATE_TIME, KHOANG_CACH,
-						this);
-				location = locationManager
-						.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+				locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, UPDATE_TIME, KHOANG_CACH,this);
+				location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
 
-			} else if (locationManager
-					.isProviderEnabled(LocationManager.NETWORK_PROVIDER)) {
-				// Sử dụng internet
+			} else if (locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)) {
 				MyHelper.Log("MyGPS", "Sử dung internet!");
-				locationManager.requestLocationUpdates(
-						LocationManager.NETWORK_PROVIDER, UPDATE_TIME,
-						KHOANG_CACH, this);
-				location = locationManager
-						.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+				locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, UPDATE_TIME,KHOANG_CACH, this);
+				location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
 			} else {
 				MyHelper.Log("MyGPS", "Không có cái nào bật cả!");
 			}
