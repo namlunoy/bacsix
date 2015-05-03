@@ -90,7 +90,6 @@ public class TimNhaThuocFragment extends Fragment implements
 			if(mapFragment == null)
 				mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.map);
 			mapFragment.getMapAsync(this);
-		
 		}else{
 			onMapReady(map);
 		}
