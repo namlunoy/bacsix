@@ -1,7 +1,10 @@
 package com.th10.bacsigiadinh.fragments;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Hashtable;
 import java.util.List;
+import java.util.Map;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -18,6 +21,7 @@ import com.google.android.gms.common.api.GoogleApiClient.OnConnectionFailedListe
 import com.google.android.gms.location.places.Places;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.GoogleMap.OnMarkerClickListener;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
@@ -34,21 +38,28 @@ import com.th10.bacsigiadinh.interfaces.MyNhaThuocCallback;
 import com.th10.bacsigiadinh.models.NhaThuoc;
 import com.th10.bacsigiadinh.models.RootObject;
 import com.th10.bacsigiadinh.tasks.AppController;
+import com.th10.bacsigiadinh.tasks.DownloadStringTask;
+import com.th10.bacsigiadinh.tasks.GetDetailAsync;
+import com.th10.bacsigiadinh.tasks.GetPhotoAsync;
 
+import android.app.Dialog;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.location.Location;
 import android.os.Bundle;
+import android.provider.SyncStateContract.Helpers;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class TimNhaThuocFragment extends Fragment implements
 		OnMapReadyCallback, ConnectionCallbacks, OnConnectionFailedListener,
-		 Response.Listener<JSONObject> , Response.ErrorListener {
+		 Response.Listener<JSONObject> , Response.ErrorListener , MyCallback {
 
 	static View rootView = null;
 	MapFragment mapFragment;
@@ -57,7 +68,9 @@ public class TimNhaThuocFragment extends Fragment implements
 	GoogleApiClient mGoogleApiClient;
 	TextView cc_status;
 	List<Marker> markers = null;
-
+	Map<Marker, NhaThuoc> mar_nha = new HashMap<Marker, NhaThuoc>();
+	Dialog detailDialog;
+	
 	public TimNhaThuocFragment() {
 		MyHelper.Log("xxx", "Ham tao!");
 	}
@@ -77,6 +90,7 @@ public class TimNhaThuocFragment extends Fragment implements
 			if(mapFragment == null)
 				mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.map);
 			mapFragment.getMapAsync(this);
+		
 		}else{
 			onMapReady(map);
 		}
@@ -95,6 +109,43 @@ public class TimNhaThuocFragment extends Fragment implements
 		map.setMyLocationEnabled(true);
 		map.getUiSettings().setZoomControlsEnabled(true);
 		// map.getUiSettings().set
+		
+		/*
+		//Su kien click vào 1 địa điểm
+		//Hiện ra bảng thông tin chi tiết của nó
+		map.setOnMarkerClickListener(new OnMarkerClickListener() {
+			//Làm sau để nhận diện marker nào với điểm nào
+			@Override
+			public boolean onMarkerClick(Marker m) {
+			    // Create custom dialog object
+                final Dialog dialog = new Dialog(getActivity());
+                detailDialog = dialog;
+                
+                // Include dialog.xml file
+                dialog.setContentView(R.layout.dialog_nhathuoc);
+                
+                // Set dialog title
+                dialog.setTitle("Thông tin");
+                
+                // set values for custom dialog components - text, image and button
+                TextView name = (TextView) dialog.findViewById(R.id.nt_name);
+                TextView address = (TextView) dialog.findViewById(R.id.nt_address);
+                TextView phone = (TextView) dialog.findViewById(R.id.nt_call);
+                ImageView image = (ImageView) dialog.findViewById(R.id.nt_photo);
+                Button bt_call = (Button) dialog.findViewById(R.id.nt_call);
+                Button bt_show = (Button) dialog.findViewById(R.id.nt_show);
+                Button bt_cancel = (Button) dialog.findViewById(R.id.nt_cancel);
+                
+                NhaThuoc n = mar_nha.get(m);
+                name.setText(n.getName());
+                address.setText(n.getAddress());
+               
+                
+                dialog.show();
+				return true;
+			}
+		});
+		*/
 	}
 
 	@Override
@@ -112,7 +163,9 @@ public class TimNhaThuocFragment extends Fragment implements
 		
 		if(markers == null)	{
 			//------  gửi request  ----
-			JsonObjectRequest request = new JsonObjectRequest(Method.GET,MyMap.getQueryString(myLocation),null,this ,this );
+			String url = MyMap.getQueryString(myLocation);
+			JsonObjectRequest request = new JsonObjectRequest(Method.GET,url,null,this ,this );
+			MyHelper.Toast(getActivity(), myLocation.toString());
 			AppController.getInstance().addToRequestQueue(request);
 		}
 	}
@@ -130,7 +183,11 @@ public class TimNhaThuocFragment extends Fragment implements
 			for (int i = 0; i < results.length(); i++) {
 				JSONObject node = (JSONObject) results.get(i);
 				NhaThuoc x = new NhaThuoc();
+				
+				x.setId(node.getString("id"));
 				x.setName(node.getString("name"));
+				x.setAddress(node.getString("formatted_address"));
+				
 				double lng = node.getJSONObject("geometry").getJSONObject("location").getDouble("lng");
 				double lat = node.getJSONObject("geometry").getJSONObject("location").getDouble("lat");
 				x.setLocation(new LatLng(lat, lng));
@@ -140,7 +197,13 @@ public class TimNhaThuocFragment extends Fragment implements
 				for (int j = 0; j < array.length(); j++)
 					types.add(array.getString(j));
 				x.setTypes(types);
+				
+				
+				//x.setPhotoId(((JSONObject)node.getJSONArray("photos").get(0)).getString("photo_reference"));
+			
+				
 				root.getResults().add(x);
+				
 			}
 		
 		} catch (JSONException e) {
@@ -152,11 +215,20 @@ public class TimNhaThuocFragment extends Fragment implements
 		markers = new ArrayList<Marker>();
 		for (int i = 0; i < root.getResults().size(); i++) {
 			MarkerOptions o = new MarkerOptions();
-			o.position(root.getResults().get(i).getLocation());
-			o.title(root.getResults().get(i).getName());
+			NhaThuoc nt = root.getResults().get(i);
+			o.position(nt.getLocation());
+			o.title(nt.getName());
+		
 			Marker currentMarker= map.addMarker(o);
 			markers.add(currentMarker);
+			mar_nha.put(currentMarker, nt);
 			currentMarker.showInfoWindow();
+			
+			//String url = "https://maps.googleapis.com/maps/api/place/details/json?placeid="+nt.getId()+"&key="+MyMap.API_KEY;
+			//new GetDetailAsync(nt).execute(url);
+			
+			//url = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference="+nt.getPhotoId()+"&key="+MyMap.API_KEY;
+			//new GetPhotoAsync(nt).execute(url);
 		}
 	
 		
@@ -191,6 +263,12 @@ public class TimNhaThuocFragment extends Fragment implements
 
 	@Override
 	public void onConnectionFailed(ConnectionResult arg0) {
+	}
+
+	//Lấy thông tin chi tiết
+	@Override
+	public void TaskDone(String result) {
+		detailDialog.show();
 	}
 
 
