@@ -38,7 +38,7 @@ public class GetBaoTask extends AsyncTask<String, Void, List<BaiBao>> {
 	Activity activityCha;
 	List<BaiBao> arrayList = new ArrayList<BaiBao>();
 	ProgressDialog mProgressDialog;
-	public static String TRANGCHU = "http://vnexpress.net/rss/tin-moi-nhat.rss";
+	
 	public GetBaoTask(Activity activityCha) {
 		super();
 		this.activityCha = activityCha;
@@ -52,7 +52,7 @@ public class GetBaoTask extends AsyncTask<String, Void, List<BaiBao>> {
 				ProgressDialog.THEME_DEVICE_DEFAULT_LIGHT);
 		mProgressDialog.getWindow().clearFlags(
 				WindowManager.LayoutParams.FLAG_DIM_BEHIND);
-		mProgressDialog.setTitle("Đang tải xin chờ ");
+		mProgressDialog.setTitle("Ä�ang táº£i xin chá»� ");
 		mProgressDialog.setMessage("Loading...");
 		mProgressDialog.setIndeterminate(false);
 		mProgressDialog.show();
@@ -79,6 +79,8 @@ public class GetBaoTask extends AsyncTask<String, Void, List<BaiBao>> {
 					Element item = (Element) itemNode;
 					rssItem.setTitle(item.getElementsByTagName("title").item(0)
 							.getTextContent().toString().trim());
+					//rssItem.setLink(item.getElementsByTagName("link").item(0)
+					//		.getTextContent().toString().trim());
 					final String s = item.getElementsByTagName("description")
 							.item(0).getTextContent().toString().trim();
 					rssItem.setDescription(s);
@@ -93,7 +95,7 @@ public class GetBaoTask extends AsyncTask<String, Void, List<BaiBao>> {
 					rssItem.setDate(item.getElementsByTagName("pubDate")
 							.item(0).getTextContent().toString().trim());
 					itemList.add(rssItem);
-					Log.d("Readed", new String(rssItem.getTitle()));
+					
 				}
 			}
 			return itemList;
@@ -110,7 +112,7 @@ public class GetBaoTask extends AsyncTask<String, Void, List<BaiBao>> {
 		ListView listView;
 		mProgressDialog.dismiss();
 		if (result == null) {
-			Toast.makeText(activityCha, "Bị lỗi :'(", 0).show();
+			Toast.makeText(activityCha, "Bá»‹ lá»—i :'(", 0).show();
 		} else {
 			arrayList = result;
 			ListBaiBaoAdapter listAdapter = new ListBaiBaoAdapter(activityCha,
@@ -119,11 +121,6 @@ public class GetBaoTask extends AsyncTask<String, Void, List<BaiBao>> {
 			listView.setAdapter(listAdapter);
 			listView.setOnItemClickListener(new RssListClickListener());
 			listAdapter.notifyDataSetChanged();
-			for (BaiBao rssItem : result) {
-				Log.d("Readed", new String(rssItem.getTitle()));
-			}
-			
-
 		}
 
 		super.onPostExecute(result);
@@ -139,9 +136,13 @@ public class GetBaoTask extends AsyncTask<String, Void, List<BaiBao>> {
 				Intent intent = new Intent(activityCha, ChiTietBaiBaoActivity.class);
 				intent.putExtra("linkUrl", arrayList.get(position).getLink()
 						.toString());
+				intent.putExtra("urlImage", arrayList.get(position).getImgUrl()
+						.toString());
+				intent.putExtra("Title", arrayList.get(position).getTitle()
+						.toString());
 				activityCha.startActivity(intent);
 			} else {
-				Toast.makeText(activityCha,"Kiểm tra lại kết nối internet", Toast.LENGTH_LONG)
+				Toast.makeText(activityCha,"Kiá»ƒm tra láº¡i káº¿t ná»‘i internet", Toast.LENGTH_LONG)
 						.show();
 			}
 			
