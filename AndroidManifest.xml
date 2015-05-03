@@ -56,6 +56,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        
+          <activity
+            android:name=".DrugViewer"
+            android:label="@string/title_activity_drug_viewer" >
+        </activity>
         <activity android:name="com.th10.bacsigiadinh.ChiTietBaiBaoActivity" >
             
         </activity>
