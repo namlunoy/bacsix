@@ -87,6 +87,7 @@ public class TraCuuThuocFragment extends Fragment implements
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
 				 Intent intent = new Intent(getActivity(), DrugViewer.class);
+				 intent.putExtra("name", listDrugs.get(position).getName());
 				 intent.putExtra("image", listDrugs.get(position).getImage());
 				 intent.putExtra("detail", listDrugs.get(position).getLink());
 				 startActivity(intent);
@@ -114,27 +115,27 @@ public class TraCuuThuocFragment extends Fragment implements
 		MenuItem searchItem = menu.findItem(R.id.action_search);
 		searchView = (SearchView) searchItem.getActionView();
 
+		
 		if (searchView != null) {
 			searchView
 					.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-
+	
 						private ProgressDialog mProgressDialog;
 
 						@Override
 						public boolean onQueryTextSubmit(String query) {
-
+							
+							searchView.clearFocus();
 							new TimThuoc()
 									.execute("http://www.camnangthuoc.vn/search/drug.drug.article/"
 											+ query);
-
-							// mProgressDialog.dismiss();
+							
 
 							return false;
 						}
 
 						@Override
 						public boolean onQueryTextChange(String newText) {
-							// TODO Auto-generated method stub
 							return false;
 						}
 					});
@@ -196,13 +197,13 @@ public class TraCuuThuocFragment extends Fragment implements
 				}
 
 				// lấy số trang
-				int pageNumber = 0, pages = 1;
-				for (Object obj : node
-						.evaluateXPath("//div[@class='pages']/a/@title")) {
-					pageNumber = pages;
-					pages = Integer.parseInt(obj.toString());
-					pageNumber = 1;
-				}
+				int pageNumber = 1, pages = 1;
+//				for (Object obj : node
+//						.evaluateXPath("//div[@class='pages']/a/@title")) {
+//					pageNumber = pages;
+//					pages = Integer.parseInt(obj.toString());
+//					pageNumber = 1;
+//				}
 
 				// lấy dữ liệu từng trang kết quả
 

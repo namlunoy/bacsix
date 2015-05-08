@@ -44,8 +44,10 @@ public class DrugViewer extends Activity {
 			Bundle extras = getIntent().getExtras();
 			String image = extras.getString("image");
 			String link = extras.getString("detail");
-
-			TextView txt = (TextView) findViewById(R.id.showDetailDrug);
+			String name = extras.getString("name");
+			
+			
+			TextView txt = (TextView) findViewById(R.id.showDetail);
 			ImageView img = (ImageView) findViewById(R.id.showImageDrug);
 
 			URL url = null;
