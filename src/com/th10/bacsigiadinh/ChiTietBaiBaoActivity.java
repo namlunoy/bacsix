@@ -1,4 +1,4 @@
-package com.th10.bacsigiadinh;
+﻿package com.th10.bacsigiadinh;
 
 import com.th10.bacsigiadinh.tasks.GetBaoTask;
 
@@ -34,7 +34,7 @@ public class ChiTietBaiBaoActivity extends Activity {
 					ProgressDialog.THEME_DEVICE_DEFAULT_LIGHT);
 			mProgressDialog.getWindow().clearFlags(
 					WindowManager.LayoutParams.FLAG_DIM_BEHIND);
-			mProgressDialog.setTitle("Ä�ang táº£i xin chá»� ");
+			mProgressDialog.setTitle("Đang tải xin chờ!");
 			mProgressDialog.setMessage("Loading...");
 			mProgressDialog.setIndeterminate(false);
 			mProgressDialog.show();
