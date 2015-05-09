@@ -84,15 +84,15 @@ public class TimNhaThuocFragment extends Fragment implements
 		MyHelper.Log("xxx", "onCreateView");
 
 		// MÃ¡p chá»‰ Ä‘Æ°á»£c phÃ©p load 1 láº§n duy nháº¥t
-		if (rootView == null)
-		{
+//		if (rootView == null)
+//		{
 			rootView = inflater.inflate(R.layout.fragment_timnhathuoc,container, false);
 			if(mapFragment == null)
 				mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.map);
 			mapFragment.getMapAsync(this);
-		}else{
-			onMapReady(map);
-		}
+//		}else{
+//			onMapReady(map);
+//		}
 
 		
 
