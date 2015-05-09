@@ -52,7 +52,7 @@ public class GetBaoTask extends AsyncTask<String, Void, List<BaiBao>> {
 				ProgressDialog.THEME_DEVICE_DEFAULT_LIGHT);
 		mProgressDialog.getWindow().clearFlags(
 				WindowManager.LayoutParams.FLAG_DIM_BEHIND);
-		mProgressDialog.setTitle("Ä�ang táº£i xin chá»� ");
+		mProgressDialog.setTitle("Đang tải xin chờ! ");
 		mProgressDialog.setMessage("Loading...");
 		mProgressDialog.setIndeterminate(false);
 		mProgressDialog.show();
@@ -112,7 +112,7 @@ public class GetBaoTask extends AsyncTask<String, Void, List<BaiBao>> {
 		ListView listView;
 		mProgressDialog.dismiss();
 		if (result == null) {
-			Toast.makeText(activityCha, "Bá»‹ lá»—i :'(", 0).show();
+			//Toast.makeText(activityCha, "BÃ¡Â»â€¹ lÃ¡Â»â€”i :'(", 0).show();
 		} else {
 			arrayList = result;
 			ListBaiBaoAdapter listAdapter = new ListBaiBaoAdapter(activityCha,
@@ -142,8 +142,8 @@ public class GetBaoTask extends AsyncTask<String, Void, List<BaiBao>> {
 						.toString());
 				activityCha.startActivity(intent);
 			} else {
-				Toast.makeText(activityCha,"Kiá»ƒm tra láº¡i káº¿t ná»‘i internet", Toast.LENGTH_LONG)
-						.show();
+				//Toast.makeText(activityCha,"KiÃ¡Â»Æ’m tra lÃ¡ÂºÂ¡i kÃ¡ÂºÂ¿t nÃ¡Â»â€˜i internet", Toast.LENGTH_LONG)
+				//		.show();
 			}
 			
 		}

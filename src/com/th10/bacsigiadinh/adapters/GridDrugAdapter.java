@@ -1,10 +1,6 @@
 package com.th10.bacsigiadinh.adapters;
 
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.zip.Inflater;
 
 import com.androidquery.AQuery;
 import com.androidquery.callback.AjaxStatus;
@@ -14,7 +10,7 @@ import com.th10.bacsigiadinh.models.Thuoc;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
+
 import android.graphics.Point;
 import android.view.Display;
 import android.view.LayoutInflater;
@@ -25,7 +21,6 @@ import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class GridDrugAdapter extends BaseAdapter {
 
@@ -38,15 +33,15 @@ public class GridDrugAdapter extends BaseAdapter {
 
 		this.context = context;
 		this.listDrug = listDrug;
-		
-		WindowManager wm = (WindowManager) context
-                .getSystemService(Context.WINDOW_SERVICE);
-      	Display display = wm.getDefaultDisplay();
 
-      	Point size = new Point();
-      	display.getSize(size);
-      	width = size.x;
-      	height = size.y;
+		WindowManager wm = (WindowManager) context
+				.getSystemService(Context.WINDOW_SERVICE);
+		Display display = wm.getDefaultDisplay();
+
+		Point size = new Point();
+		display.getSize(size);
+		width = size.x;
+		height = size.y;
 	}
 
 	@Override
@@ -81,14 +76,15 @@ public class GridDrugAdapter extends BaseAdapter {
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		rowView = inflater.inflate(R.layout.grid_drug, null);
 
-		rowView.setLayoutParams(new GridView.LayoutParams((width/2)-5, height/5));
+		rowView.setLayoutParams(new GridView.LayoutParams((width / 2) - 5,
+				height / 5));
 		rowView.setPadding(8, 8, 8, 8);
-		
+
 		holder.textView = (TextView) rowView.findViewById(R.id.textDrug);
 		holder.imageView = (ImageView) rowView.findViewById(R.id.imageDrug);
 
-		//holder.imageView.setX(height/5-50);
-		//holder.imageView.setY(width/2-50);
+		// holder.imageView.setX(height/5-50);
+		// holder.imageView.setY(width/2-50);
 		AQuery aq = new AQuery(convertView);
 
 		holder.textView.setText(listDrug.get(position).getName());
@@ -106,32 +102,29 @@ public class GridDrugAdapter extends BaseAdapter {
 
 						});
 
-		/*URL url = null;
-		Bitmap bmp = null;
+		/*
+		 * URL url = null; Bitmap bmp = null;
+		 * 
+		 * try { url = new URL(listDrug.get(position).getImage()); bmp =
+		 * BitmapFactory.decodeStream(url.openConnection() .getInputStream()); }
+		 * catch (MalformedURLException e) {
+		 * 
+		 * } catch (IOException e) {
+		 * 
+		 * } holder.imageView.setImageBitmap(bmp);
+		 */
 
-		try {
-			url = new URL(listDrug.get(position).getImage());
-			bmp = BitmapFactory.decodeStream(url.openConnection()
-					.getInputStream());
-		} catch (MalformedURLException e) {
-
-		} catch (IOException e) {
-
-		}
-		holder.imageView.setImageBitmap(bmp);*/
-
-		/*rowView.setOnClickListener(new View.OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-
-				Toast.makeText(context,
-						"You Clicked " + listDrug.get(position).getLink(),
-						Toast.LENGTH_LONG).show();
-				
-			}
-		});*/
+		/*
+		 * rowView.setOnClickListener(new View.OnClickListener() {
+		 * 
+		 * @Override public void onClick(View v) { // TODO Auto-generated method
+		 * stub
+		 * 
+		 * Toast.makeText(context, "You Clicked " +
+		 * listDrug.get(position).getLink(), Toast.LENGTH_LONG).show();
+		 * 
+		 * } });
+		 */
 		return rowView;
 	}
 

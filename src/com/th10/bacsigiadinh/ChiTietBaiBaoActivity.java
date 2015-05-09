@@ -2,6 +2,7 @@
 
 import com.th10.bacsigiadinh.tasks.GetBaoTask;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
@@ -18,6 +19,10 @@ public class ChiTietBaiBaoActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
+		ActionBar actionBar = getActionBar();
+		actionBar.setBackgroundDrawable(getResources().getDrawable(
+				R.drawable.background));
 		setContentView(R.layout.activity_chi_tiet_bai_bao);
 		Bundle bundle = getIntent().getExtras();
 		link = bundle.getString("linkUrl");

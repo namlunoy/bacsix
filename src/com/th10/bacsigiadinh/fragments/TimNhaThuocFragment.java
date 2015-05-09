@@ -83,7 +83,7 @@ public class TimNhaThuocFragment extends Fragment implements
 				
 		MyHelper.Log("xxx", "onCreateView");
 
-		// Máp chỉ được phép load 1 lần duy nhất
+		// MÃ¡p chá»‰ Ä‘Æ°á»£c phÃ©p load 1 láº§n duy nháº¥t
 		if (rootView == null)
 		{
 			rootView = inflater.inflate(R.layout.fragment_timnhathuoc,container, false);
@@ -110,10 +110,10 @@ public class TimNhaThuocFragment extends Fragment implements
 		// map.getUiSettings().set
 		
 		/*
-		//Su kien click vào 1 địa điểm
-		//Hiện ra bảng thông tin chi tiết của nó
+		//Su kien click vÃ o 1 Ä‘á»‹a Ä‘iá»ƒm
+		//Hiá»‡n ra báº£ng thÃ´ng tin chi tiáº¿t cá»§a nÃ³
 		map.setOnMarkerClickListener(new OnMarkerClickListener() {
-			//Làm sau để nhận diện marker nào với điểm nào
+			//LÃ m sau Ä‘á»ƒ nháº­n diá»‡n marker nÃ o vá»›i Ä‘iá»ƒm nÃ o
 			@Override
 			public boolean onMarkerClick(Marker m) {
 			    // Create custom dialog object
@@ -124,7 +124,7 @@ public class TimNhaThuocFragment extends Fragment implements
                 dialog.setContentView(R.layout.dialog_nhathuoc);
                 
                 // Set dialog title
-                dialog.setTitle("Thông tin");
+                dialog.setTitle("ThÃ´ng tin");
                 
                 // set values for custom dialog components - text, image and button
                 TextView name = (TextView) dialog.findViewById(R.id.nt_name);
@@ -161,7 +161,7 @@ public class TimNhaThuocFragment extends Fragment implements
 
 		
 		if(markers == null)	{
-			//------  gửi request  ----
+			//------  gá»­i request  ----
 			String url = MyMap.getQueryString(myLocation);
 			JsonObjectRequest request = new JsonObjectRequest(Method.GET,url,null,this ,this );
 			MyHelper.Toast(getActivity(), myLocation.toString());
@@ -207,10 +207,10 @@ public class TimNhaThuocFragment extends Fragment implements
 		
 		} catch (JSONException e) {
 			e.printStackTrace();
-			MyHelper.Toast(getActivity(), "onResponse" + e.getMessage());
+			//MyHelper.Toast(getActivity(), "onResponse" + e.getMessage());
 		}
-		MyHelper.Toast(getActivity(), "Có "+root.getResults().size());
-		//Chuyển hết về marker
+		//MyHelper.Toast(getActivity(), "CÃ³ "+root.getResults().size());
+		//Chuyá»ƒn háº¿t vá»� marker
 		markers = new ArrayList<Marker>();
 		for (int i = 0; i < root.getResults().size(); i++) {
 			MarkerOptions o = new MarkerOptions();
@@ -264,7 +264,7 @@ public class TimNhaThuocFragment extends Fragment implements
 	public void onConnectionFailed(ConnectionResult arg0) {
 	}
 
-	//Lấy thông tin chi tiết
+	//Láº¥y thÃ´ng tin chi tiáº¿t
 	@Override
 	public void TaskDone(String result) {
 		detailDialog.show();
