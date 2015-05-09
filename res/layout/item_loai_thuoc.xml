@@ -1,0 +1,42 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="2dip" >
+    
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ffffff" />
+
+    <LinearLayout
+        android:id="@+id/layoutloaithuoc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginRight="8dip"
+        android:paddingLeft="5dp" >
+
+        <ImageView
+            android:id="@+id/imgLoaiThuoc"
+            android:layout_width="100dip"
+            android:layout_height="80dip" />
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/txtLoaiThuoc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        
+        android:layout_alignTop="@+id/layoutloaithuoc"
+        android:layout_toRightOf="@+id/layoutloaithuoc"
+        android:text="Paracetamon"
+        android:textColor="#000000"
+        android:textSize="16dip"
+        android:textStyle="bold"
+        android:typeface="sans" />
+
+    
+
+</RelativeLayout>

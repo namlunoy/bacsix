@@ -4,7 +4,8 @@
     <string name="app_name">Bác Sĩ Gia Đình</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-    <string name="title_activity_chi_tiet_bai_bao">ChiTietBaiBaoActivity</string>
-    <string name="title_activity_drug_viewer">DrugViewer</string>
+    <string name="title_activity_chi_tiet_bai_bao">Chi tiết bài báo</string>
+    <string name="title_activity_drug_viewer">Chi tiết thuốc</string>
+    <string name="title_activity_grid_drug">Danh sách thuốc</string>
 
 </resources>
