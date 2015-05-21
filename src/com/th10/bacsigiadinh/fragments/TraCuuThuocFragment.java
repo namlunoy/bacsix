@@ -116,6 +116,7 @@ public class TraCuuThuocFragment extends Fragment implements
 							intent.putExtra("link",
 									"http://www.camnangthuoc.vn/search/drug.drug.article/"
 											+ query);
+							intent.putExtra("query", query);
 							intent.putExtra("way", "2");
 							startActivity(intent);
 

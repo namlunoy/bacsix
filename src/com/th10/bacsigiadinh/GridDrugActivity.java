@@ -59,7 +59,8 @@ public class GridDrugActivity extends Activity implements
 		if (way.equals("1")) {
 			GetData("type="+type);
 		} else {
-			GetData("s="+type);
+			String query = extra.getString("query");
+			GetData("s="+query);
 		}
 
 		gridThuoc.setOnItemClickListener(new GridClickItemListener());
