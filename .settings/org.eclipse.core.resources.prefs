@@ -1,0 +1,9 @@
+eclipse.preferences.version=1
+encoding//src/com/th10/bacsigiadinh/DrugViewer.java=UTF-8
+encoding//src/com/th10/bacsigiadinh/GridDrugActivity.java=UTF-8
+encoding//src/com/th10/bacsigiadinh/fragments/TimNhaThuocFragment.java=UTF-8
+encoding//src/com/th10/bacsigiadinh/fragments/TraCuuThuocFragment.java=UTF-8
+encoding//src/com/th10/bacsigiadinh/tasks/GetBaoTask.java=UTF-8
+encoding//src/com/th10/bacsigiadinh/tasks/ThongTinThuoc.java=UTF-8
+encoding//src/com/th10/bacsigiadinh/tasks/TimThuoc.java=UTF-8
+encoding//src/com/th10/bacsigiadinh/tasks/TimThuocX.java=UTF-8

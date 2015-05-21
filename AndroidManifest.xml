@@ -33,7 +33,7 @@
         android:required="true" />
 
     <application
-        android:name=".tasks.AppController"
+   android:name="com.th10.bacsigiadinh.tasks.AppController"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
