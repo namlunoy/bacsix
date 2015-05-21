@@ -1,4 +1,4 @@
-package com.th10.bacsigiadinh.fragments;
+﻿package com.th10.bacsigiadinh.fragments;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
