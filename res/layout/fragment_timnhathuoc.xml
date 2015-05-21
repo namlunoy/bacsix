@@ -12,10 +12,10 @@
         
      />
     
-    <TextView 
+    <!--  TextView 
         android:id="@+id/cc_status"
         android:layout_height="fill_parent"
         android:layout_width="fill_parent"
-        />
+        /-->
 
 </RelativeLayout>

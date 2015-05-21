@@ -8,6 +8,8 @@ import org.htmlcleaner.HtmlCleaner;
 import org.htmlcleaner.TagNode;
 import org.htmlcleaner.XPatherException;
 
+import com.androidquery.AQuery;
+import com.koushikdutta.urlimageviewhelper.UrlImageViewHelper;
 import com.th10.bacsigiadinh.helpers.MyHelper;
 import com.th10.bacsigiadinh.tasks.ThongTinThuoc;
 
@@ -46,27 +48,15 @@ public class DrugViewer extends Activity {
 
 		Bundle extras = getIntent().getExtras();
 		String image = extras.getString("image");
+		System.out.println(image);
 		String link = extras.getString("detail");
 		String name = extras.getString("name");
 
 		txt = (TextView) findViewById(R.id.showDetail);
 		ImageView img = (ImageView) findViewById(R.id.showImageDrug);
 
-		URL url = null;
-		Bitmap bmp = null;
-
-		try {
-
-			url = new URL(image);
-
-			bmp = BitmapFactory.decodeStream(url.openConnection()
-					.getInputStream());
-
-			new ThongTinThuoc(this).execute(link);
-			img.setImageBitmap(bmp);
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
+		UrlImageViewHelper.setUrlDrawable(img, image);
+		new ThongTinThuoc(this).execute(link);
 
 	}
 
