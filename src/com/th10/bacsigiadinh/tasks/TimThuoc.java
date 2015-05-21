@@ -162,6 +162,7 @@ public class TimThuoc extends AsyncTask<String, Void, Void> {
 						}
 					}
 					
+					///ss
 					listDrug.add(thuoc);
 
 					j = j + 1;

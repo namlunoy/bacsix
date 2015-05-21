@@ -26,10 +26,5 @@ public class LoaiThuoc {
 		this.link = link;
 	}
 	
-	public LoaiThuoc(String name,String link, String image){
-		this.name=name;
-		this.link=link;
-		this.image=image;
-	}
 	
 }
