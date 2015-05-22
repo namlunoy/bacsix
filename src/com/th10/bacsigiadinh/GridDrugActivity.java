@@ -20,7 +20,6 @@ import com.th10.bacsigiadinh.helpers.MyHelper;
 import com.th10.bacsigiadinh.models.Thuoc;
 import com.th10.bacsigiadinh.tasks.AppController;
 import com.th10.bacsigiadinh.tasks.TimThuoc;
-import com.th10.bacsigiadinh.tasks.TimThuocX;
 import com.th10.bacsigiadinh.tasks.TimThuoc.GridClickItemListener;
 
 import android.app.ActionBar;
