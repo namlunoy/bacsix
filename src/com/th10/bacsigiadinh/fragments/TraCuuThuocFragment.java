@@ -1,22 +1,18 @@
 ﻿package com.th10.bacsigiadinh.fragments;
 
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
+
 import java.util.ArrayList;
 
-import org.htmlcleaner.CleanerProperties;
-import org.htmlcleaner.HtmlCleaner;
-import org.htmlcleaner.TagNode;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.Fragment;
-import android.app.ProgressDialog;
+
 
 import android.content.Intent;
-import android.os.AsyncTask;
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -24,13 +20,13 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
+
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.SearchView;
-import android.widget.SearchView.OnQueryTextListener;
+
 
 import com.android.volley.Response;
 import com.android.volley.Request.Method;
@@ -65,7 +61,6 @@ public class TraCuuThuocFragment extends Fragment implements
 				container, false);
 		listLoaiThuocs = new ArrayList<LoaiThuoc>();
 		listThuoc = (ListView) rootView.findViewById(R.id.listLoaiThuoc);
-		System.out.println("get data");
 		GetData();
 		listThuoc.setOnItemClickListener(new OnItemClickListener() {
 
@@ -151,8 +146,6 @@ public class TraCuuThuocFragment extends Fragment implements
 								l.setImage(o.getString("image"));
 								l.setLink(o.getString("ID"));
 								listLoaiThuocs.add(l);
-								System.out.println(l.getName() + " "
-										+ l.getLink());
 							}
 
 							listThuoc.setAdapter(new ListLoaiThuocAdapter(

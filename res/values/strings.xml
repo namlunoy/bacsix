@@ -7,5 +7,7 @@
     <string name="title_activity_chi_tiet_bai_bao">Chi tiết bài báo</string>
     <string name="title_activity_drug_viewer">Chi tiết thuốc</string>
     <string name="title_activity_grid_drug">Danh sách thuốc</string>
+    <string name="title_activity_list_benh">ListBenh</string>
+    <string name="title_activity_chi_tiet_benh">Chi tiết bài viết</string>
 
 </resources>

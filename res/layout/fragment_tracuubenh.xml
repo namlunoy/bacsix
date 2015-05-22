@@ -1,12 +1,16 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?><LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
-    
-  <TextView
+    android:orientation="vertical"
+    tools:context=".MainActivity" >
+
+   
+
+    <ListView
+        android:id="@+id/listLoaiBenh"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Tra cứu benh" />
-    
+        android:layout_height="wrap_content" >
+    </ListView>
+
 </LinearLayout>
