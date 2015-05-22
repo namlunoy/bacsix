@@ -20,6 +20,7 @@ import android.widget.GridView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
+import com.th10.bacsigiadinh.ChiTietBenh;
 import com.th10.bacsigiadinh.DrugViewer;
 import com.th10.bacsigiadinh.GridDrugActivity;
 import com.th10.bacsigiadinh.R;
@@ -123,8 +124,8 @@ public class TimBenh extends AsyncTask<String, Void, Void> {
 		public void onItemClick(AdapterView<?> arg0, View arg1, int position,
 				long arg3) {
 			// TODO Auto-generated method stub
-			Intent intent = new Intent(act, DrugViewer.class);
-			intent.putExtra("detail", listBenh.get(position).getLink());
+			Intent intent = new Intent(act, ChiTietBenh.class);
+			intent.putExtra("link", "http://camnangthuoc.vn"+listBenh.get(position).getLink());
 			act.startActivity(intent);
 			
 		}

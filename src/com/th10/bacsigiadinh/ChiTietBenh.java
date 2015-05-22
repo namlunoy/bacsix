@@ -27,7 +27,7 @@ public class ChiTietBenh extends Activity {
 		setContentView(R.layout.activity_chi_tiet_benh);
 
 		Bundle bundle = getIntent().getExtras();
-		//link = bundle.getString("linkUrl");
+		link = bundle.getString("link");
 		webView = (WebView) findViewById(R.id.webViewBenh);
 		webView.getSettings().setSupportZoom(true);
 		webView.setInitialScale(1);
@@ -45,7 +45,7 @@ public class ChiTietBenh extends Activity {
 		mProgressDialog.setMessage("Loading...");
 		mProgressDialog.setIndeterminate(false);
 		mProgressDialog.show();
-		webView.loadUrl("http://camnangthuoc.vn/content/view/health/article/3901");
+		webView.loadUrl(link);
 	}
 
 	class WebviewClienfinist extends WebViewClient {

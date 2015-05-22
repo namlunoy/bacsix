@@ -32,14 +32,13 @@ public class DrugViewer extends Activity {
 	private ProgressDialog mProgressDialog;
 	public TextView txt;
 	private String drugDetail;
+	public ImageView img;
+	public String image;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
-				.permitAll().build();
-		StrictMode.setThreadPolicy(policy);
 		ActionBar actionBar = getActionBar();
 		actionBar.setBackgroundDrawable(getResources().getDrawable(
 				R.drawable.background));
@@ -47,16 +46,18 @@ public class DrugViewer extends Activity {
 		setContentView(R.layout.drug_viewer);
 
 		Bundle extras = getIntent().getExtras();
-		String image = extras.getString("image");
+		image = extras.getString("image");
 		System.out.println(image);
 		String link = extras.getString("detail");
 		String name = extras.getString("name");
 
 		txt = (TextView) findViewById(R.id.showDetail);
-		ImageView img = (ImageView) findViewById(R.id.showImageDrug);
+		img = (ImageView) findViewById(R.id.showImageDrug);
 
-		UrlImageViewHelper.setUrlDrawable(img, image);
+		
 		new ThongTinThuoc(this).execute(link);
+		
+		//UrlImageViewHelper.setUrlDrawable(img, image);
 
 	}
 

@@ -60,8 +60,9 @@ public class TraCuuBenhFragment extends Fragment {
 					int position, long arg3) {
 				// TODO Auto-generated method stub
 				Intent intent = new Intent(getActivity(),
-						GridDrugActivity.class);
+						DanhSachBenh.class);
 				intent.putExtra("link", listLoaiBenh.get(position).getId());
+				System.out.println("Link truyen sang: " +listLoaiBenh.get(position).getId());
 				intent.putExtra("way", "1");
 				startActivity(intent);
 
@@ -97,7 +98,7 @@ public class TraCuuBenhFragment extends Fragment {
 							searchView.clearFocus();
 
 							Intent intent = new Intent(getActivity(),
-									ChiTietBenh.class);
+									DanhSachBenh.class);
 							intent.putExtra("link", query);
 							intent.putExtra("way", "2");
 							startActivity(intent);

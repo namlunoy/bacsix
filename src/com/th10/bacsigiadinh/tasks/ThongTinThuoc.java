@@ -8,6 +8,7 @@ import org.htmlcleaner.CleanerProperties;
 import org.htmlcleaner.HtmlCleaner;
 import org.htmlcleaner.TagNode;
 
+import com.koushikdutta.urlimageviewhelper.UrlImageViewHelper;
 import com.th10.bacsigiadinh.DrugViewer;
 
 import android.app.Activity;
@@ -19,13 +20,12 @@ import android.widget.TextView;
 public class ThongTinThuoc extends AsyncTask<String, Void, String> {
 	private ProgressDialog mProgressDialog;
 	private String drugDetail;
+	private String image;
 	DrugViewer act;
-
-
-	
 	
 	public ThongTinThuoc(DrugViewer act) {
 		super();
+		this.image=act.image;
 		this.act=act;
 	}
 
@@ -33,13 +33,14 @@ public class ThongTinThuoc extends AsyncTask<String, Void, String> {
 	protected void onPostExecute(String result) {
 		mProgressDialog.dismiss();
 		
-		act.txt.setText(result.trim());
+		act.txt.setText(drugDetail.trim());
+		UrlImageViewHelper.setUrlDrawable(act.img, image);
 		super.onPostExecute(result);
 	}
 
 	@Override
 	protected void onPreExecute() {
-		// TODO Auto-generated method stub
+		
 		mProgressDialog = new ProgressDialog(act);
 		mProgressDialog = new ProgressDialog(act,
 				ProgressDialog.THEME_DEVICE_DEFAULT_LIGHT);
@@ -48,6 +49,7 @@ public class ThongTinThuoc extends AsyncTask<String, Void, String> {
 		mProgressDialog.setTitle("Đang tải xin chờ!");
 		mProgressDialog.setMessage("Loading...");
 		mProgressDialog.setIndeterminate(false);
+		mProgressDialog.show();
 		super.onPreExecute();
 	}
 

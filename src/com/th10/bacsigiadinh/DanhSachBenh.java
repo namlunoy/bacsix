@@ -3,6 +3,7 @@ package com.th10.bacsigiadinh;
 import java.util.ArrayList;
 
 import com.th10.bacsigiadinh.models.Benh;
+import com.th10.bacsigiadinh.tasks.TimBenh;
 
 import android.app.ActionBar;
 import android.app.Activity;
@@ -24,18 +25,19 @@ public class DanhSachBenh extends Activity {
 				R.drawable.background));
 		setContentView(R.layout.activity_danh_sach_benh);
 		
-		listBenhs = new ArrayList<>();
+		listBenhs = new ArrayList<Benh>();
 		listBenh = (ListView) findViewById(R.id.listBenh);
 		Bundle extra = getIntent().getExtras();
-		String link = extra.getString("link");
+		
 		String way = extra.getString("way");
+		String qqq="";
 		if (way.equals("1")){
-			link = "http://camnangthuoc.vn/category/view/disease_cat/article/"+link;
+			qqq = "http://camnangthuoc.vn/category/view/disease_cat/article/"+extra.getInt("link");
 		}else {
-			link ="http://camnangthuoc.vn/search/disease.listview-disease.article/"+link;
+			qqq ="http://camnangthuoc.vn/search/disease.listview-disease.article/"+extra.getString("link");
 		}
 		
-		
+		new TimBenh(listBenhs, this).execute(qqq);
 		
 	}
 }
