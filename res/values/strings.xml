@@ -9,5 +9,6 @@
     <string name="title_activity_grid_drug">Danh sách thuốc</string>
     <string name="title_activity_list_benh">ListBenh</string>
     <string name="title_activity_chi_tiet_benh">Chi tiết bài viết</string>
+    <string name="title_activity_danh_sach_benh">Danh sách bệnh</string>
 
 </resources>
